@@ -121,6 +121,7 @@
     gap: 1.5rem;
   }
   .nav-mark {
+    flex: none;
     font-family: var(--serif);
     font-size: 1.05rem;
     color: var(--violet);
@@ -132,6 +133,8 @@
   }
   .nav-links {
     display: flex;
+    flex: 1 1 auto;
+    min-width: 0;
     gap: clamp(0.9rem, 2vw, 1.6rem);
     overflow-x: auto;
     scrollbar-width: none;
