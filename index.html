@@ -114,11 +114,12 @@
     transition: border-color 0.3s ease;
   }
   .nav .wrap {
+    max-width: 1180px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 60px;
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
   .nav-mark {
     flex: none;
@@ -416,6 +417,26 @@
     color: var(--ink-faint);
   }
 
+  @media (max-width: 780px) {
+    .nav-name { display: none; }
+  }
+  @media (max-width: 640px) {
+    .nav .wrap {
+      flex-wrap: wrap;
+      height: auto;
+      padding-top: 0.7rem;
+      padding-bottom: 0.7rem;
+      row-gap: 0.6rem;
+    }
+    .nav-mark { order: 1; }
+    .nav-cta { order: 2; margin-left: auto; }
+    .nav-links {
+      order: 3;
+      flex-basis: 100%;
+      -webkit-mask-image: linear-gradient(to right, black 90%, transparent 100%);
+      mask-image: linear-gradient(to right, black 90%, transparent 100%);
+    }
+  }
   @media (max-width: 720px) {
     .hero .wrap { grid-template-columns: 1fr; }
     .portrait-stage { max-width: 260px; margin: 0 auto; order: -1; }
@@ -434,7 +455,7 @@
         <circle cx="11" cy="11" r="6" stroke-width="1"/>
         <circle cx="11" cy="11" r="2.5" stroke-width="1"/>
       </svg>
-      Pooja Subramanian
+      <span class="nav-name">Pooja Subramanian</span>
     </a>
     <div class="nav-links" id="navLinks">
       <a href="#about">About</a>
