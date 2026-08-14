@@ -342,8 +342,16 @@
   .tl-body li + li { margin-top: 0.4rem; }
 
   /* projects */
-  .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+  .proj-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.25rem;
+    scroll-snap-type: x proximity;
+    padding-bottom: 0.9rem;
+  }
   .proj-card {
+    flex: 0 0 360px;
+    scroll-snap-align: start;
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: 6px;
@@ -563,6 +571,9 @@
     .nav-name { display: none; }
   }
   @media (max-width: 640px) {
+    .proj-card { flex-basis: 85vw; }
+  }
+  @media (max-width: 640px) {
     .nav .wrap {
       flex-wrap: wrap;
       height: auto;
@@ -767,6 +778,19 @@
       <div class="proj-grid">
         <div class="proj-card">
           <div class="proj-meta">
+            <span class="proj-date">Aug '26 – Present</span>
+            <span class="proj-status in-progress">In Progress</span>
+          </div>
+          <h3>Custom Electric Sticky Note Pad</h3>
+          <span class="proj-tag">ESP-32 · Embedded Display · CAD</span>
+          <ul>
+            <li>Designing a desktop widget display — to-do list, fitness goals, date, and time — driven by an ESP-32 microcontroller through a driver chip to a 7" Elecrow LCD, powered over USB-C.</li>
+            <li>Sketching a retro-TV-styled enclosure in CAD, with remaining work on widget-to-app connectivity and power integration.</li>
+            <li>New CAD files for the enclosure coming soon.</li>
+          </ul>
+        </div>
+        <div class="proj-card">
+          <div class="proj-meta">
             <span class="proj-date">Jul '26 – Present</span>
             <span class="proj-status in-progress">In Progress</span>
           </div>
@@ -785,6 +809,45 @@
           </div>
           <h3>Diffusion Phantom for Cervical &amp; Endometrial Cancer MRI</h3>
           <span class="proj-tag">Senior Capstone · with Icahn School of Medicine at Mount Sinai</span>
+          <a class="proj-report" href="files/diffusion-phantom-senior-capstone-report.pdf" target="_blank" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+            View full report (PDF)
+          </a>
+          <div class="carousel" data-carousel role="region" aria-label="Diffusion phantom design and validation gallery">
+            <div class="carousel-track" data-track>
+              <figure class="carousel-slide">
+                <img src="images/capstone/01-cad-render.jpg" alt="SolidWorks CAD render of the cylindrical diffusion phantom with ten vials on a central stand" loading="lazy">
+                <figcaption>SolidWorks CAD — ten-vial phantom held in a central PEEK stand</figcaption>
+              </figure>
+              <figure class="carousel-slide">
+                <img src="images/capstone/02-dimensioned-drawing.jpg" alt="Dimensioned top-view drawing of the vial layout and phantom diameter" loading="lazy">
+                <figcaption>Dimensioned top view — vial spacing and overall phantom diameter</figcaption>
+              </figure>
+              <figure class="carousel-slide">
+                <img src="images/capstone/03-adc-temperature-dependence.jpg" alt="Graph of apparent diffusion coefficient versus temperature for various PVP concentrations" loading="lazy">
+                <figcaption>ADC vs. temperature across PVP concentrations, fit to the NIST model</figcaption>
+              </figure>
+              <figure class="carousel-slide">
+                <img src="images/capstone/04-vial-layout-sketch.jpg" alt="Sketch of the ten vial concentrations arranged from lower to higher restricted diffusion" loading="lazy">
+                <figcaption>Vial concentration map — 5% to 50% w/v PVP, low to high restricted diffusion</figcaption>
+              </figure>
+              <figure class="carousel-slide">
+                <img src="images/capstone/05-prototype-photo.jpg" alt="Photo of the fabricated phantom prototype with ten vials mounted in the stand" loading="lazy">
+                <figcaption>Fabricated prototype — ten vials seated in the stand before sealing</figcaption>
+              </figure>
+              <figure class="carousel-slide">
+                <img src="images/capstone/06-mri-adc-map.jpg" alt="Apparent diffusion coefficient map of the phantom from an actual 3T MRI scan at Icahn School of Medicine at Mount Sinai" loading="lazy">
+                <figcaption>ADC map from the actual 3T MRI scan at Icahn School of Medicine at Mount Sinai</figcaption>
+              </figure>
+              <figure class="carousel-slide">
+                <img src="images/capstone/07-validation-graphs.jpg" alt="Four graphs comparing measured ADC values against literature values for cervical and endometrial tissue states" loading="lazy">
+                <figcaption>Validation — measured ADC vs. literature values across four tissue/cancer states</figcaption>
+              </figure>
+            </div>
+            <button type="button" class="car-btn car-prev" data-prev aria-label="Previous image">‹</button>
+            <button type="button" class="car-btn car-next" data-next aria-label="Next image">›</button>
+            <div class="carousel-dots" data-dots></div>
+          </div>
           <ul>
             <li>Developed a cervical diffusion phantom, iterating on material concentrations to create a controlled, validated range of diffusivity values simulating cancer-associated tissue.</li>
             <li>Applied DV methods and quantitative biomarker validation protocols as a standard tool for evaluating DW-MRI imaging systems.</li>
