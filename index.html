@@ -352,8 +352,8 @@
   }
   .proj-card:first-child { border-top: none; padding-top: 0.25rem; }
   .proj-card:nth-child(even) { flex-direction: row-reverse; }
-  .proj-media { flex: 0 0 clamp(220px, 32vw, 320px); }
-  .proj-body { flex: 1 1 auto; min-width: 0; }
+  .proj-media { flex: 0 0 auto; width: clamp(220px, 32vw, 320px); min-width: 0; }
+  .proj-body { flex: 1 1 0%; min-width: 0; }
   @media (max-width: 720px) {
     .proj-card, .proj-card:nth-child(even) { flex-direction: column; align-items: stretch; gap: 1.25rem; }
     .proj-media { flex-basis: auto; width: 100%; }
