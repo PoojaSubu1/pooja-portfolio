@@ -342,32 +342,23 @@
   .tl-body li + li { margin-top: 0.4rem; }
 
   /* projects */
-  .proj-grid {
-    display: flex;
-    overflow-x: auto;
-    gap: 1.25rem;
-    scroll-snap-type: x proximity;
-    padding-bottom: 0.9rem;
-  }
+  .proj-grid { display: flex; flex-direction: column; }
   .proj-card {
-    flex: 0 0 360px;
-    scroll-snap-align: start;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 1.4rem 1.5rem 1.6rem;
-    box-shadow: var(--shadow);
-    position: relative;
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    padding: clamp(1.75rem, 4vw, 2.75rem) 0;
+    border-top: 1px solid var(--line);
   }
-  .proj-card::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--violet), var(--rose));
+  .proj-card:first-child { border-top: none; padding-top: 0.25rem; }
+  .proj-card:nth-child(even) { flex-direction: row-reverse; }
+  .proj-media { flex: 0 0 clamp(220px, 32vw, 320px); }
+  .proj-body { flex: 1 1 auto; min-width: 0; }
+  @media (max-width: 720px) {
+    .proj-card, .proj-card:nth-child(even) { flex-direction: column; align-items: stretch; gap: 1.25rem; }
+    .proj-media { flex-basis: auto; width: 100%; }
   }
-  .proj-meta { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; }
+  .proj-meta { display: flex; align-items: center; gap: 0.6rem; }
   .proj-date {
     font-family: var(--mono);
     font-size: 0.78rem;
@@ -391,8 +382,8 @@
     border: 1px solid var(--rose);
     background: color-mix(in srgb, var(--rose) 12%, transparent);
   }
-  .proj-card h3 { font-size: 1.08rem; margin-top: 0.4rem; color: var(--ink); line-height: 1.3; }
-  .proj-tag { font-size: 0.82rem; color: var(--rose); font-family: var(--mono); margin-top: 0.3rem; display: block; }
+  .proj-body h3 { font-size: clamp(1.15rem, 2.2vw, 1.4rem); margin-top: 0.5rem; color: var(--violet); line-height: 1.3; }
+  .proj-tag { font-size: 0.82rem; color: var(--rose); font-family: var(--mono); margin-top: 0.35rem; display: block; }
   .proj-report {
     display: inline-flex;
     align-items: center;
@@ -400,17 +391,17 @@
     font-family: var(--mono);
     font-size: 0.78rem;
     color: var(--ink-soft);
-    margin-top: 0.55rem;
+    margin-top: 0.6rem;
     text-decoration: none;
     border-bottom: 1px solid transparent;
   }
   .proj-report:hover { color: var(--rose); border-bottom-color: var(--rose); }
   .proj-report svg { flex: none; }
-  .proj-card ul { margin: 0.85rem 0 0; padding-left: 1.05rem; color: var(--ink-soft); font-size: 0.92rem; }
-  .proj-card li + li { margin-top: 0.4rem; }
+  .proj-body ul { margin: 1rem 0 0; padding-left: 1.1rem; color: var(--ink-soft); font-size: 0.95rem; }
+  .proj-body li + li { margin-top: 0.4rem; }
 
   /* project image carousel */
-  .carousel { position: relative; margin-top: 0.9rem; }
+  .carousel { position: relative; }
   .carousel-track {
     display: flex;
     overflow-x: auto;
@@ -569,9 +560,6 @@
 
   @media (max-width: 780px) {
     .nav-name { display: none; }
-  }
-  @media (max-width: 640px) {
-    .proj-card { flex-basis: 85vw; }
   }
   @media (max-width: 640px) {
     .nav .wrap {
@@ -777,42 +765,38 @@
       </div>
       <div class="proj-grid">
         <div class="proj-card">
-          <div class="proj-meta">
-            <span class="proj-date">Aug '26 – Present</span>
-            <span class="proj-status in-progress">In Progress</span>
+          <div class="proj-body">
+            <div class="proj-meta">
+              <span class="proj-date">Aug '26 – Present</span>
+              <span class="proj-status in-progress">In Progress</span>
+            </div>
+            <h3>Custom Electric Sticky Note Pad</h3>
+            <span class="proj-tag">ESP-32 · Embedded Display · CAD</span>
+            <ul>
+              <li>Designing a desktop widget display — to-do list, fitness goals, date, and time — driven by an ESP-32 microcontroller through a driver chip to a 7" Elecrow LCD, powered over USB-C.</li>
+              <li>Sketching a retro-TV-styled enclosure in CAD.</li>
+              <li>Scoping subunits for widget design/build, and app connectivity for the to-do list and other widgets.</li>
+              <li>New CAD files for the enclosure coming soon.</li>
+            </ul>
           </div>
-          <h3>Custom Electric Sticky Note Pad</h3>
-          <span class="proj-tag">ESP-32 · Embedded Display · CAD</span>
-          <ul>
-            <li>Designing a desktop widget display — to-do list, fitness goals, date, and time — driven by an ESP-32 microcontroller through a driver chip to a 7" Elecrow LCD, powered over USB-C.</li>
-            <li>Sketching a retro-TV-styled enclosure in CAD, with remaining work on widget-to-app connectivity and power integration.</li>
-            <li>New CAD files for the enclosure coming soon.</li>
-          </ul>
         </div>
         <div class="proj-card">
-          <div class="proj-meta">
-            <span class="proj-date">Jul '26 – Present</span>
-            <span class="proj-status in-progress">In Progress</span>
+          <div class="proj-body">
+            <div class="proj-meta">
+              <span class="proj-date">Jul '26 – Present</span>
+              <span class="proj-status in-progress">In Progress</span>
+            </div>
+            <h3>Biopotential (ECG/EMG) Acquisition Board</h3>
+            <span class="proj-tag">INA333 · KiCad · Analog Front-End</span>
+            <ul>
+              <li>Designing and building a custom biopotential acquisition device from schematic to bring-up, centered on an INA333 instrumentation amplifier with a right-leg-drive circuit for common-mode noise rejection.</li>
+              <li>Implementing active high-pass and low-pass filtering (Sallen-Key topology) to isolate the ECG/EMG signal band ahead of digitization.</li>
+              <li>Laying out a full 2-layer PCB in KiCad with careful analog/digital ground separation for signal integrity, then validating captured waveforms against a reference ECG dataset.</li>
+            </ul>
           </div>
-          <h3>Biopotential (ECG/EMG) Acquisition Board</h3>
-          <span class="proj-tag">INA333 · KiCad · Analog Front-End</span>
-          <ul>
-            <li>Designing and building a custom biopotential acquisition device from schematic to bring-up, centered on an INA333 instrumentation amplifier with a right-leg-drive circuit for common-mode noise rejection.</li>
-            <li>Implementing active high-pass and low-pass filtering (Sallen-Key topology) to isolate the ECG/EMG signal band ahead of digitization.</li>
-            <li>Laying out a full 2-layer PCB in KiCad with careful analog/digital ground separation for signal integrity, then validating captured waveforms against a reference ECG dataset.</li>
-          </ul>
         </div>
         <div class="proj-card">
-          <div class="proj-meta">
-            <span class="proj-date">Sept '25 – May '26</span>
-            <span class="proj-status completed">Completed</span>
-          </div>
-          <h3>Diffusion Phantom for Cervical &amp; Endometrial Cancer MRI</h3>
-          <span class="proj-tag">Senior Capstone · with Icahn School of Medicine at Mount Sinai</span>
-          <a class="proj-report" href="files/diffusion-phantom-senior-capstone-report.pdf" target="_blank" rel="noopener">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
-            View full report (PDF)
-          </a>
+          <div class="proj-media">
           <div class="carousel" data-carousel role="region" aria-label="Diffusion phantom design and validation gallery">
             <div class="carousel-track" data-track>
               <figure class="carousel-slide">
@@ -848,23 +832,27 @@
             <button type="button" class="car-btn car-next" data-next aria-label="Next image">›</button>
             <div class="carousel-dots" data-dots></div>
           </div>
-          <ul>
-            <li>Developed a cervical diffusion phantom, iterating on material concentrations to create a controlled, validated range of diffusivity values simulating cancer-associated tissue.</li>
-            <li>Applied DV methods and quantitative biomarker validation protocols as a standard tool for evaluating DW-MRI imaging systems.</li>
-            <li>Troubleshot agarose gel concentration inconsistencies, establishing a reproducible concentration–diffusivity correlation.</li>
-          </ul>
+          </div>
+          <div class="proj-body">
+            <div class="proj-meta">
+              <span class="proj-date">Sept '25 – May '26</span>
+              <span class="proj-status completed">Completed</span>
+            </div>
+            <h3>Diffusion Phantom for Cervical &amp; Endometrial Cancer MRI</h3>
+            <span class="proj-tag">Senior Capstone · with Icahn School of Medicine at Mount Sinai</span>
+            <a class="proj-report" href="files/diffusion-phantom-senior-capstone-report.pdf" target="_blank" rel="noopener">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+              View full report (PDF)
+            </a>
+            <ul>
+              <li>Developed a cervical diffusion phantom, iterating on material concentrations to create a controlled, validated range of diffusivity values simulating cancer-associated tissue.</li>
+              <li>Applied DV methods and quantitative biomarker validation protocols as a standard tool for evaluating DW-MRI imaging systems.</li>
+              <li>Troubleshot agarose gel concentration inconsistencies, establishing a reproducible concentration–diffusivity correlation.</li>
+            </ul>
+          </div>
         </div>
         <div class="proj-card">
-          <div class="proj-meta">
-            <span class="proj-date">Feb – Apr '26</span>
-            <span class="proj-status completed">Completed</span>
-          </div>
-          <h3>Breast Cancer Histopathology Segmentation (BEETLE)</h3>
-          <span class="proj-tag">PyTorch · U-Net</span>
-          <a class="proj-report" href="files/beetle-histopathology-segmentation-report.pdf" target="_blank" rel="noopener">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
-            View full report (PDF)
-          </a>
+          <div class="proj-media">
           <div class="carousel" data-carousel role="region" aria-label="BEETLE segmentation results gallery">
             <div class="carousel-track" data-track>
               <figure class="carousel-slide">
@@ -912,22 +900,26 @@
             <button type="button" class="car-btn car-next" data-next aria-label="Next image">›</button>
             <div class="carousel-dots" data-dots></div>
           </div>
-          <ul>
-            <li>Built a deep learning segmentation pipeline for breast cancer histopathology whole-slide images, training a U-Net from scratch to delineate clinically relevant tissue regions.</li>
-            <li>Preprocessed WSIs into ROI patches aligned to pathologist annotations for supervised tumor-boundary detection.</li>
-          </ul>
+          </div>
+          <div class="proj-body">
+            <div class="proj-meta">
+              <span class="proj-date">Feb – Apr '26</span>
+              <span class="proj-status completed">Completed</span>
+            </div>
+            <h3>Breast Cancer Histopathology Segmentation (BEETLE)</h3>
+            <span class="proj-tag">PyTorch · U-Net</span>
+            <a class="proj-report" href="files/beetle-histopathology-segmentation-report.pdf" target="_blank" rel="noopener">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+              View full report (PDF)
+            </a>
+            <ul>
+              <li>Built a deep learning segmentation pipeline for breast cancer histopathology whole-slide images, training a U-Net from scratch to delineate clinically relevant tissue regions.</li>
+              <li>Preprocessed WSIs into ROI patches aligned to pathologist annotations for supervised tumor-boundary detection.</li>
+            </ul>
+          </div>
         </div>
         <div class="proj-card">
-          <div class="proj-meta">
-            <span class="proj-date">Feb – Apr '26</span>
-            <span class="proj-status completed">Completed</span>
-          </div>
-          <h3>Autonomous Food Delivery Robot</h3>
-          <span class="proj-tag">ROS 2 · Nav2 · SLAM</span>
-          <a class="proj-report" href="files/astar-food-bot-report.pdf" target="_blank" rel="noopener">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
-            View full report (PDF)
-          </a>
+          <div class="proj-media">
           <div class="carousel" data-carousel role="region" aria-label="A* Food Bot navigation gallery">
             <div class="carousel-track" data-track>
               <figure class="carousel-slide">
@@ -955,22 +947,26 @@
             <button type="button" class="car-btn car-next" data-next aria-label="Next image">›</button>
             <div class="carousel-dots" data-dots></div>
           </div>
-          <ul>
-            <li>Built a 2D occupancy map via Cartographer SLAM; implemented AMCL localization and tuned EKF, PID, and DWB cost weights; resolved LiDAR noise and scan-matching failures.</li>
-            <li>Deployed a full ROS 2 Nav2 stack on a Yahboom mecanum-wheel robot, configuring an A* global planner and DWB local planner for real-time obstacle avoidance.</li>
-          </ul>
+          </div>
+          <div class="proj-body">
+            <div class="proj-meta">
+              <span class="proj-date">Feb – Apr '26</span>
+              <span class="proj-status completed">Completed</span>
+            </div>
+            <h3>Autonomous Food Delivery Robot</h3>
+            <span class="proj-tag">ROS 2 · Nav2 · SLAM</span>
+            <a class="proj-report" href="files/astar-food-bot-report.pdf" target="_blank" rel="noopener">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+              View full report (PDF)
+            </a>
+            <ul>
+              <li>Built a 2D occupancy map via Cartographer SLAM; implemented AMCL localization and tuned EKF, PID, and DWB cost weights; resolved LiDAR noise and scan-matching failures.</li>
+              <li>Deployed a full ROS 2 Nav2 stack on a Yahboom mecanum-wheel robot, configuring an A* global planner and DWB local planner for real-time obstacle avoidance.</li>
+            </ul>
+          </div>
         </div>
         <div class="proj-card">
-          <div class="proj-meta">
-            <span class="proj-date">Mar '25</span>
-            <span class="proj-status completed">Completed</span>
-          </div>
-          <h3>Cantilever Beam Velocity Estimator</h3>
-          <span class="proj-tag">Analog Circuits · MATLAB</span>
-          <a class="proj-report" href="files/cantilever-beam-velocity-estimates-report.pdf" target="_blank" rel="noopener">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
-            View full report (PDF)
-          </a>
+          <div class="proj-media">
           <div class="carousel" data-carousel role="region" aria-label="Cantilever beam velocity estimator gallery">
             <div class="carousel-track" data-track>
               <figure class="carousel-slide">
@@ -1014,22 +1010,26 @@
             <button type="button" class="car-btn car-next" data-next aria-label="Next image">›</button>
             <div class="carousel-dots" data-dots></div>
           </div>
-          <ul>
-            <li>Designed a dual-modality sensing system comparing an ADXL327 accelerometer (integration path) and a resistive strain gauge (differentiation path) to estimate beam tip velocity.</li>
-            <li>Fabricated analog signal-conditioning circuits (Wheatstone bridge, instrumentation diff amp, op-amp integrator/differentiator); processed multi-channel waveforms in MATLAB to validate estimates.</li>
-          </ul>
+          </div>
+          <div class="proj-body">
+            <div class="proj-meta">
+              <span class="proj-date">Mar '25</span>
+              <span class="proj-status completed">Completed</span>
+            </div>
+            <h3>Cantilever Beam Velocity Estimator</h3>
+            <span class="proj-tag">Analog Circuits · MATLAB</span>
+            <a class="proj-report" href="files/cantilever-beam-velocity-estimates-report.pdf" target="_blank" rel="noopener">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+              View full report (PDF)
+            </a>
+            <ul>
+              <li>Designed a dual-modality sensing system comparing an ADXL327 accelerometer (integration path) and a resistive strain gauge (differentiation path) to estimate beam tip velocity.</li>
+              <li>Fabricated analog signal-conditioning circuits (Wheatstone bridge, instrumentation diff amp, op-amp integrator/differentiator); processed multi-channel waveforms in MATLAB to validate estimates.</li>
+            </ul>
+          </div>
         </div>
         <div class="proj-card">
-          <div class="proj-meta">
-            <span class="proj-date">Nov '24</span>
-            <span class="proj-status completed">Completed</span>
-          </div>
-          <h3>Structural Simulation of Tibia Under Multi-Mode Loading</h3>
-          <span class="proj-tag">SolidWorks · FEA</span>
-          <a class="proj-report" href="files/tibia-multi-mode-loading-report.pdf" target="_blank" rel="noopener">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
-            View full report (PDF)
-          </a>
+          <div class="proj-media">
           <div class="carousel" data-carousel role="region" aria-label="Tibia FEA simulation gallery">
             <div class="carousel-track" data-track>
               <figure class="carousel-slide">
@@ -1073,10 +1073,23 @@
             <button type="button" class="car-btn car-next" data-next aria-label="Next image">›</button>
             <div class="carousel-dots" data-dots></div>
           </div>
-          <ul>
-            <li>Modeled a hollow tibia in SolidWorks and ran FEA under compression, torsion, and bending to evaluate deformation and peak stress, informing implant loading analysis consistent with FDA / ISO 7206-4 frameworks.</li>
-            <li>Computed analytical stress/strain across varying elastic moduli and validated against FEA output.</li>
-          </ul>
+          </div>
+          <div class="proj-body">
+            <div class="proj-meta">
+              <span class="proj-date">Nov '24</span>
+              <span class="proj-status completed">Completed</span>
+            </div>
+            <h3>Structural Simulation of Tibia Under Multi-Mode Loading</h3>
+            <span class="proj-tag">SolidWorks · FEA</span>
+            <a class="proj-report" href="files/tibia-multi-mode-loading-report.pdf" target="_blank" rel="noopener">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+              View full report (PDF)
+            </a>
+            <ul>
+              <li>Modeled a hollow tibia in SolidWorks and ran FEA under compression, torsion, and bending to evaluate deformation and peak stress, informing implant loading analysis consistent with FDA / ISO 7206-4 frameworks.</li>
+              <li>Computed analytical stress/strain across varying elastic moduli and validated against FEA output.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
