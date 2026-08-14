@@ -798,6 +798,57 @@
           </div>
           <h3>Breast Cancer Histopathology Segmentation (BEETLE)</h3>
           <span class="proj-tag">PyTorch · U-Net</span>
+          <a class="proj-report" href="files/beetle-histopathology-segmentation-report.pdf" target="_blank" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+            View full report (PDF)
+          </a>
+          <div class="carousel" data-carousel role="region" aria-label="BEETLE segmentation results gallery">
+            <div class="carousel-track" data-track>
+              <figure class="carousel-slide">
+                <img src="images/beetle/01-annotated-wsi.jpg" alt="Annotated whole-slide image showing the four-class tissue segmentation scheme" loading="lazy">
+                <figcaption>Annotated WSI — four-class scheme: invasive/non-invasive epithelium, necrosis, other</figcaption>
+              </figure>
+              <figure class="carousel-slide">
+                <img src="images/beetle/02-patch-classes.jpg" alt="Representative 256x256 pixel patches for each of the four tissue classes" loading="lazy">
+                <figcaption>Representative 256×256 training patches for each tissue class</figcaption>
+              </figure>
+              <figure class="carousel-slide">
+                <img src="images/beetle/03-unet-architecture.jpg" alt="Architecture diagram and parameter summary of the custom U-Net" loading="lazy">
+                <figcaption>Custom U-Net architecture — ~1.9M parameters, PyTorch encoder/decoder</figcaption>
+              </figure>
+              <figure class="carousel-slide">
+                <img src="images/beetle/04-nnunet-pipeline.jpg" alt="Diagram of the nnUNet automated configuration pipeline" loading="lazy">
+                <figcaption>nnU-Net's automated configuration pipeline applied to BEETLE</figcaption>
+              </figure>
+              <figure class="carousel-slide">
+                <img src="images/beetle/05-unet-loss-dice-curves.jpg" alt="Training and validation loss curves and per-class Dice scores for the custom U-Net" loading="lazy">
+                <figcaption>Custom U-Net — loss curves and per-class Dice scores, revealing overfitting</figcaption>
+              </figure>
+              <figure class="carousel-slide">
+                <img src="images/beetle/06-qualitative-results.jpg" alt="Grid of input images, ground truth, and predictions showing good, middling, and poor segmentation cases" loading="lazy">
+                <figcaption>Qualitative results — good, middling, and poor segmentation cases</figcaption>
+              </figure>
+              <figure class="carousel-slide">
+                <img src="images/beetle/07-nnunet-loss-curves.jpg" alt="Training and validation loss curves and pseudo-Dice score for the nnUNet model" loading="lazy">
+                <figcaption>nnU-Net — loss and pseudo-Dice curves over 50 epochs, reaching ~0.8</figcaption>
+              </figure>
+              <figure class="carousel-slide">
+                <img src="images/beetle/08-nnunet-good-prediction.jpg" alt="Ground truth versus nnUNet prediction on a 256x256 patch" loading="lazy">
+                <figcaption>nnU-Net — ground truth vs. prediction at the 256×256 patch scale</figcaption>
+              </figure>
+              <figure class="carousel-slide">
+                <img src="images/beetle/09-roi-scale-mismatch.jpg" alt="nnUNet prediction overlaid on a large region of interest, illustrating a scale mismatch" loading="lazy">
+                <figcaption>Scaling to full ROIs exposed a patch-to-ROI scale mismatch</figcaption>
+              </figure>
+              <figure class="carousel-slide">
+                <img src="images/beetle/10-benchmark-comparison.jpg" alt="Table comparing this project's Dice scores from nnUNet against the Lems et al. benchmark" loading="lazy">
+                <figcaption>Final Dice scores vs. the published Lems et al. benchmark</figcaption>
+              </figure>
+            </div>
+            <button type="button" class="car-btn car-prev" data-prev aria-label="Previous image">‹</button>
+            <button type="button" class="car-btn car-next" data-next aria-label="Next image">›</button>
+            <div class="carousel-dots" data-dots></div>
+          </div>
           <ul>
             <li>Built a deep learning segmentation pipeline for breast cancer histopathology whole-slide images, training a U-Net from scratch to delineate clinically relevant tissue regions.</li>
             <li>Preprocessed WSIs into ROI patches aligned to pathologist annotations for supervised tumor-boundary detection.</li>
